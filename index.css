@@ -43,6 +43,11 @@ body{
     font-size: larger;
 }
 
+.menu-right a{
+    font-weight: 500;
+    font-size: larger;
+}
+
 
 /*****End Nav Bar*****/
 
@@ -56,6 +61,18 @@ body{
     background-size: cover;
     width: 100vw;
     height: 100vh;
+}
+
+#welcome-text{
+    position: relative;
+    top: 40%;
+    left: ;
+}
+
+#welcome-text p{
+    text-align: center;
+    font-weight: 600;
+    font-size: 50px;
 }
 
 
