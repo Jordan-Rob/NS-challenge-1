@@ -13,8 +13,10 @@ body{
 
 /*****Nav Bar*****/
 
+
+
 #nav{
-    min-height: 60px;
+    min-height: 100px;
     position: fixed;
     display: flex;
     align-items:center;
@@ -24,6 +26,7 @@ body{
     left: 0;
     right: 0;
     margin-top: 20px;
+    
     
 }
 
@@ -78,3 +81,30 @@ body{
 
 /*****Landing Section*****/
 
+
+/*************Card section*****************/
+
+#card-section{
+    background-image: url("./images/Colored\ Shapes\ \(4\).svg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.section-title{
+    position: relative;
+    left:37%;
+    margin-bottom: 60px;
+}
+
+.cards{
+    position: relative;
+    top: 32%;
+    left: 5%;
+}
+
+.card{
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 20px;
+}
