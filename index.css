@@ -7,7 +7,7 @@
 }
 
 body{
-  width: 100%;
+  width: 100vw;
   overflow-x: hidden;
   background-image: url("./images/Colored\ Shapes.svg");
   background-repeat: repeat;
@@ -31,7 +31,6 @@ nav {
 }
 #nav{
     display: flex;
-    align-items:center;
     justify-content: space-between;
     
     
@@ -58,6 +57,30 @@ nav {
     font-weight: 500;
     font-size: larger;
 }
+
+@media (max-width: 768px){
+    .menu{display: none;}
+    #account{display: none;}
+    nav{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+}
+
+@media (max-width: 992px) {
+    .menu-right a img{
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .menu-right a img{
+        display: none;
+    }
+}
+
+
 
 
 /*****End Nav Bar*****/
@@ -86,6 +109,18 @@ nav {
     font-size: 50px;
 }
 
+@media(max-width: 768px){
+
+    #landingSection{
+        height: 50vh;
+    }
+
+    #welcome-text p{
+        font-size: 31px !important;
+        font-weight: 600;
+    }
+}
+
 
 /*****Landing Section*****/
 
@@ -102,18 +137,36 @@ nav {
 
 .section-title{
     position: relative;
-    left:37%;
+    left:40%;
     margin-bottom: 60px;
 }
 
 .cards{
     position: relative;
     top: 32%;
-    left: 5%;
+    left: 2%;
 }
 
 .card{
     margin-bottom: 50px;
     border: none;
     border-radius: 20px;
+}
+
+.card button{
+    background-color: #F9C784 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 5px;
+}
+
+@media(max-width: 768px){
+
+    #card-section{
+        padding-top: 10px;
+    }
+
+    .section-title{
+        left:20%
+    }
 }
