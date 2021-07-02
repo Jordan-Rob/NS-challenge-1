@@ -1,3 +1,9 @@
+const rls = (id) => {
+  window.location.href = 'posts.html';
+  localStorage.setItem('userId', id)
+}
+
+
 
 
 const createUserElements = () =>{ 
@@ -12,8 +18,8 @@ const createUserElements = () =>{
   let requestOptions = {
     headers: myHeaders,
   };
-  
-  
+
+
   //Get a list of users
   const getUsers = async () => {
   
@@ -24,6 +30,7 @@ const createUserElements = () =>{
       const users = data;
 
       console.log(users)
+
       
       //Add courses to the table
       users.forEach((user) => {
@@ -35,9 +42,11 @@ const createUserElements = () =>{
         const card = document.createElement("div")
         card.className = "card shadow p-3";
         card.style.width = "18rem"
+        card.style.height = "24rem"
   
         const cardBody = document.createElement("div")
         cardBody.className = "card-body"
+
   
         cardBody.innerHTML = `
                               <h5 class="card-title">name: ${user.name}</h5>
@@ -46,9 +55,8 @@ const createUserElements = () =>{
                               <p class="card-text">address: ${user.address.street}, ${user.address.city}</p>
                               <p class="card-text">phone: ${user.phone}</p>
                               <p class="card-text">website: ${user.website}</p>
-  
+                              <button type="button" class="btn btn-primary"  onclick='rls(${user.id})'>Get posts</button>
                             `
-  
         card.append(cardBody);
   
         col.append(card);
