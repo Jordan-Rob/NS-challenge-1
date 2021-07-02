@@ -1,6 +1,8 @@
+
 const rls = (id) => {
   window.location.href = 'posts.html';
   localStorage.setItem('userId', id)
+
 }
 
 
@@ -36,13 +38,15 @@ const createUserElements = () =>{
       users.forEach((user) => {
         // create a new div column element
         const col = document.createElement("div");
-        col.className = "col-4";
+        col.className = "col-lg-4 col-md-6 col-sm-12";
 
         //create a new div card element & add it to column
         const card = document.createElement("div")
         card.className = "card shadow p-3";
-        card.style.width = "18rem"
-        card.style.height = "24rem"
+        card.style.width = "20rem"
+        card.style.height = "26rem"
+        card.setAttribute('data-aos', "fade-up")
+        card.setAttribute('data-aos-duration', "15000")
   
         const cardBody = document.createElement("div")
         cardBody.className = "card-body"

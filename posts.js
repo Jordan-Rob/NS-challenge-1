@@ -1,6 +1,6 @@
 const createPostElements = () => {
     
-  const userId = localStorage.getItem("userId");    
+  const userId = localStorage.getItem("userId");
   const cardSection = document.getElementById('cards-area');
   const baseLink = `https://jsonplaceholder.typicode.com/posts?userId=${userId}`;
   let myHeaders = new Headers();
@@ -28,13 +28,15 @@ const createPostElements = () => {
       posts.forEach((post) => {
         // create a new div column element
         const col = document.createElement("div");
-        col.className = "col-4";
+        col.className = "col-lg-4 col-md-6 col-sm-12";
 
         //create a new div card element & add it to column
         const card = document.createElement("div")
         card.className = "card shadow p-3";
         card.style.width = "21rem"
-        card.style.height = "24rem"
+        card.style.height = "20rem"
+        card.setAttribute('data-aos', "fade-up")
+        card.setAttribute('data-aos-duration', "15000")
   
         const cardBody = document.createElement("div")
         cardBody.className = "card-body"
@@ -64,4 +66,38 @@ const createPostElements = () => {
   
   }
   
+/*
+const currentUser = async() => {
+    const userId = localStorage.getItem("userId");
+    const baseLink = 'https://jsonplaceholder.typicode.com/users';
+    let myHeaders = new Headers();
+  
+    myHeaders.append('Content-Type', 'application/json');
+  
+    let requestOptions = {
+        headers: myHeaders,
+    };
+
+    const getUser = async () => {
+  
+        requestOptions.method = 'GET';
+        const response = await fetch(baseLink , requestOptions);
+        if (response.status === 200) {
+        const data = await response.json();
+        const users = data;
+
+        const user = users.map(user => user.id === userId)
+        console.log(user)
+        return user.username
+        }
+        else{
+            return response.status(404)
+        }    
+    }
+
+    getUser();
+}
+
+*/
+
   
