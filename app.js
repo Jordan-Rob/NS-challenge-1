@@ -1,45 +1,69 @@
-const courseTable = document.getElementById('course-table');
-const baseLink = 'https://www.smart-investment.club/ercapi';
-//Get token from local storage
-const token = localStorage.getItem('accessToken');
-let myHeaders = new Headers();
 
-myHeaders.append('Application-Key', 'YOUR-APP-KEY'); //replace YOUR-APP-KEY with the real key
-myHeaders.append('Authorization', 'Bearer ' + token);
-myHeaders.append('Content-Type', 'application/json');
 
-let requestOptions = {
-  headers: myHeaders,
-};
+const createUserElements = () =>{ 
 
-//Add table headers
-courseTable.innerHTML = `<tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>#participants</th>
-        </tr>`;
 
-//Get a list of courses
-const getCourses = async () => {
+  const cardSection = document.getElementById('cards-area');
+  const baseLink = 'https://jsonplaceholder.typicode.com/users';
+  let myHeaders = new Headers();
+  
+  myHeaders.append('Content-Type', 'application/json');
+  
+  let requestOptions = {
+    headers: myHeaders,
+  };
+  
+  
+  //Get a list of users
+  const getUsers = async () => {
+  
+    requestOptions.method = 'GET';
+    const response = await fetch(baseLink , requestOptions);
+    if (response.status === 200) {
+      const data = await response.json();
+      const users = data;
 
-  requestOptions.method = 'GET';
-  const response = await fetch(baseLink + '/api/courses', requestOptions);
-  if (response.status === 200) {
-    const data = await response.json();
-    const courses = data.content;
-    
-    //Add courses to the table
-    courses.forEach((course) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${course.id}</td> 
-                     <td>${course.name}</td>
-                     <td>${course.numParticipants}</td>`;
-      courseTable.appendChild(tr);
-    });
-  } else {
-    const div = document.createElement('div');
-    const message = `Something went wrong with your request (${response.status})`;
-    div.innerHTML = message;
-    document.body.appendChild(div);
-  }
-};
+      console.log(users)
+      
+      //Add courses to the table
+      users.forEach((user) => {
+        // create a new div column element
+        const col = document.createElement("div");
+        col.className = "col-4";
+
+        //create a new div card element & add it to column
+        const card = document.createElement("div")
+        card.className = "card shadow p-3";
+        card.style.width = "18rem"
+  
+        const cardBody = document.createElement("div")
+        cardBody.className = "card-body"
+  
+        cardBody.innerHTML = `
+                              <h5 class="card-title">name: ${user.name}</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">username: ${user.username}</h6>
+                              <h6 class="card-subtitle mb-2 text-muted">email: ${user.email}</h6>
+                              <p class="card-text">address: ${user.address.street}, ${user.address.city}</p>
+                              <p class="card-text">phone: ${user.phone}</p>
+                              <p class="card-text">website: ${user.website}</p>
+  
+                            `
+  
+        card.append(cardBody);
+  
+        col.append(card);
+
+        cardSection.appendChild(col);
+      });
+    } else {
+      const div = document.createElement('div');
+      const message = `Something went wrong with your request (${response.status})`;
+      div.innerHTML = message;
+      document.body.appendChild(div);
+    }
+  };
+
+  getUsers();
+
+}
+
