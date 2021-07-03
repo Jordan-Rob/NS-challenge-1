@@ -1,6 +1,10 @@
 const createPostElements = () => {
     
-  const userId = localStorage.getItem("userId");
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users[0]
+  const userId = user.id
+  console.log(userId)
+  const username = user.name
   const cardSection = document.getElementById('cards-area');
   const baseLink = `https://jsonplaceholder.typicode.com/posts?userId=${userId}`;
   let myHeaders = new Headers();
@@ -11,8 +15,14 @@ const createPostElements = () => {
     headers: myHeaders,
   };
 
+  const sectionTitle = document.getElementById('st')
+  const postTitle = document.createElement('h3')
+  postTitle.innerText = `${username}'s Posts`
 
-  //Get a list of users
+  sectionTitle.appendChild(postTitle)
+
+
+  //Get a list of posts
   const getUsersPosts = async () => {
   
     requestOptions.method = 'GET';

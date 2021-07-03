@@ -1,7 +1,13 @@
+var users = []
 
-const rls = (id) => {
+const rls = (id, name) => {
   window.location.href = 'posts.html';
-  localStorage.setItem('userId', id)
+  const user = {
+    id:id,
+    name:name
+  };
+  users.push(user);
+  localStorage.setItem('users', (JSON.stringify(users)));
 
 }
 
@@ -59,7 +65,7 @@ const createUserElements = () =>{
                               <p class="card-text">address: ${user.address.street}, ${user.address.city}</p>
                               <p class="card-text">phone: ${user.phone}</p>
                               <p class="card-text">website: ${user.website}</p>
-                              <button type="button" class="btn btn-primary"  onclick='rls(${user.id})'>Get User's posts</button>
+                              <button type="button" class="btn btn-primary"  onclick='rls(${user.id}, "${user.name}")'>Get User's posts</button>
                             `
         card.append(cardBody);
   
