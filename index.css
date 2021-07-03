@@ -141,6 +141,10 @@ nav {
     margin-bottom: 60px;
 }
 
+#st{
+    left:35%;
+}
+
 .cards{
     position: relative;
     top: 32%;
